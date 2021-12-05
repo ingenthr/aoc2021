@@ -15,7 +15,7 @@ shouldAdd a b =
 
 solve:: [Int] -> Int
 solve list =
-  compareMine [(head list)] (tail list)
+  compareMine list (tail list)
 
 
 getInput :: IO [Int]
