@@ -1,38 +1,26 @@
 import System.IO
-import Data.Maybe
 
-readDataFrom fileHandle = 
-    do 
-        isFileEnd <- hIsEOF fileHandle
-        if isFileEnd 
-            then
-                return ("")
-            else
-                do
-                    info <- hGetLine  fileHandle
-                    putStrLn info
-                    readDataFrom fileHandle
+compareMine:: [Int] -> [Int] -> Int
+compareMine a b =
+  sum listRes where
+    listRes = zipWith shouldAdd a b
 
-readAndAdd fileHandle Maybe prev Maybe sum =
-    do
-        isFileEnd -< hIsEOF fileHandle
-        if isFileEnd
-            then
-               return sum
-            else
-                do
-                    x <- hGetLine fileHandle :: Integer
-                    if prev isNothing
-                        then
-                            readAndAdd x 0
-                        else
-                            x > prev = readAndAdd x 1                    
+shouldAdd:: Int -> Int -> Int
+shouldAdd a b =
+  if a < b
+    then
+     1
+    else
+     0
 
-main = 
-    do
-        fileName <- "input.txt"
-        fileHandle <- openFile fileName ReadMode
+solve:: [Int] -> Int
+solve list =
+  compareMine [(head list)] (tail list)
 
 
-        readAndAdd fileHandle Nothing Nothing
+getInput :: IO [Int]
+getInput = fmap read.lines <$> readFile "input.txt"
 
+
+main =
+  getInput >>= \input -> print (solve input)
