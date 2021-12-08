@@ -1,13 +1,15 @@
 import System.IO
 
 compareMine:: [Int] -> [Int] -> Int -> Int
+compareMine _ [] total = total
 compareMine a b total =
   compareMine (tail a) (tail b) windowRes where
-    windowRes = compareWindows a (tail b)
+    windowRes = (compareWindows a b) + total
 
 compareWindows:: [Int] -> [Int] -> Int
 compareWindows first second =
-  shouldAdd sumFirst sumSecond where
+  shouldAdd sumFirst sumSecond
+  where
     sumFirst = sum (take 3 first)
     sumSecond = sum (take 3 second)
 
