@@ -1,10 +1,10 @@
 name:                aoc2021
 version:             0.1.0.0
 github:              "ingenthr/aoc2021"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2021 Author name here"
+license:             MIT
+author:              "Matt Ingenthron"
+maintainer:          "mingenthron@acm.org"
+copyright:           "2021 Matt Ingenthron"
 
 extra-source-files:
 - README.md
@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/inge
 
 dependencies:
 - base >= 4.7 && < 5
+- megaparsec
+- text
 
 library:
   source-dirs: src
